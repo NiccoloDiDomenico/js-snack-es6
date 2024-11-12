@@ -75,3 +75,33 @@ for (let i = 0; i < team.length; i++) {
 console.log(newArray);
 
 
+// Snack 3 (bonus)
+
+// Creo un array a caso per la funzione
+let students = ["Alessio", "Davide", "Lorenza", "Mattia", "Sara"];
+console.log(students);
+
+// Creo la funzione che ritornerà un arrey nuovo con i valori che hanno la posizione compresa tra i due numeri:
+/**
+ * Description
+ * @param {string} arrayToCheck
+ * @param {number} from
+ * @param {number} to
+ * @returns {string} // newArray
+*/
+function positionIncluded(arrayToCheck, from, to) {
+    const newArray = [];
+    for (let i = from; i <= to; i++) {
+        const curElement = arrayToCheck[i];
+
+
+        newArray.push(curElement); 
+    }
+    return newArray;
+}
+
+// Stampo il risultato in console
+positionIncluded(students, 1, 3);
+console.log(`Gli studenti selezionati sono:`, positionIncluded(students, 1, 3));
+
+
