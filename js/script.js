@@ -11,17 +11,17 @@ const biciList = [
 console.log(biciList);
 
 // Creo una varibile generale che ha come valore il peso della prima bici
-let lighterBici = biciList[0].peso
+let lighterBici = biciList[0];
 console.log(lighterBici);
 
 // Creo un ciclo for per scorrere nella lista di oggetti
 for (let i = 0; i < biciList.length; i++) {
     const currentBici = biciList[i];
     // Creo un istruzione condizionale per trovare l'oggetto più leggero
-    if (currentBici.peso < lighterBici) {
+    if (currentBici.peso < lighterBici.peso) {
         lighterBici = currentBici;
         console.log(lighterBici);
-    }
+    }           
 }
 
 // Stampo il risultato in console
@@ -47,28 +47,24 @@ const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min) + min)
 
 // Creo tre variabili generali 
 const newArray = [];
-let randomPoints;
-let randomGoals;
 
 // Creo un ciclo for per scorrere nella lista degli oggetti
 for (let i = 0; i < team.length; i++) {
     let currentTeam = team[i];
     // console.log(currentTeam);
 
-    // Assegno un numero casuale da 0 a 100 alle variabili di appoggio
-    randomPoints = getRandomInt(0, 100)
-    randomGoals = getRandomInt(0, 100)
-    // console.log(randomPoints, randomGoals);
-
-    // Assegno quel numero casuale alle keys degli oggetti nell'array
-    currentTeam.punti = randomPoints
-    currentTeam.goal = randomGoals
+    // Assegno numero casuale alle keys degli oggetti nell'array
+    currentTeam.punti = getRandomInt(0, 100)
+    currentTeam.goal = getRandomInt(0, 100)
     console.log(currentTeam);
 
     // Creo un nuovo array con solo due keys: nome e punti delle squadre
-    newArray.push(currentTeam.nome, currentTeam.punti)
+    const newTeam = {
+        nome: currentTeam.nome, 
+        punti: currentTeam.punti
+    };
+    newArray.push(newTeam)
     // console.log(newArray);
-    
 }
 
 // Stampo il risultato in console
@@ -84,24 +80,42 @@ console.log(students);
 // Creo la funzione che ritornerà un arrey nuovo con i valori che hanno la posizione compresa tra i due numeri:
 /**
  * Description
- * @param {string} arrayToCheck
+ * @param {array} arrayToCheck
  * @param {number} from
  * @param {number} to
- * @returns {string} // newArray
+ * @returns {array} // newArray
 */
 function positionIncluded(arrayToCheck, from, to) {
-    const newArray = [];
+    const resultArray = [];
     for (let i = from; i <= to; i++) {
         const curElement = arrayToCheck[i];
 
-
-        newArray.push(curElement); 
+        resultArray.push(curElement); 
+        // console.log(resultArray);
+        
     }
-    return newArray;
+    return resultArray;
 }
 
 // Stampo il risultato in console
 positionIncluded(students, 1, 3);
 console.log(`Gli studenti selezionati sono:`, positionIncluded(students, 1, 3));
+
+// Stessa esecuzione più dettagliata
+// function positionIncluded(arrayToCheck, from, to) {
+//     const resultArray = [];
+//     for (let i = 0; i <= arrayToCheck.length; i++) {
+//         const curElement = arrayToCheck[i];
+
+//         if (i >= from && i <= to) {
+//             resultArray.push(curElement)            
+//         }
+
+//         resultArray.push(curElement); 
+//         // console.log(resultArray);
+        
+//     }
+//     return resultArray;
+// }
 
 
